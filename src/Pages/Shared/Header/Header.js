@@ -50,8 +50,8 @@ const Header = () => {
                                     </>
                                     :
                                     <>
-                                        <Link to='/login'>Login</Link>
-                                        <Link to='/register'>Register</Link>
+                                        <Link to='/login'><Button variant="light">Login</Button></Link>
+                                        <Link to='/register'><Button variant="light">Register</Button></Link>
                                     </>
                             }
 
