@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 
 const Login = () => {
-
+    const [error, setError] = useState('');
     const { singIn } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -21,8 +24,8 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 form.reset();
-                navigate('/')
-                // setError('');
+                navigate(from, { replace: true });
+                setError('');
                 // if (user.emailVerified) {
                 //     navigate(from, { replace: true });
                 // }
@@ -32,7 +35,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error)
-                // setError(error.message);
+                setError(error.message);
             })
         // .finally(() => {
         //     setLoading(false);
@@ -57,7 +60,7 @@ const Login = () => {
                 Login
             </Button>
             <Form.Text className="text-danger">
-
+                {error}
             </Form.Text>
         </Form>
     );
