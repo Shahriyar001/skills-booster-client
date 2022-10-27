@@ -3,10 +3,10 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
-import { FaStar, FaUserGraduate, IconName } from "react-icons/fa";
+import { FaStar, FaUserGraduate } from "react-icons/fa";
 
 const CourseSummaryCard = ({ course }) => {
-    const { _id, title, author, details, rating, image_url, total_view } = course;
+    const { _id, title, details, rating, image_url, total_view } = course;
     console.log(course);
     return (
         <div className='row-cols-1 row-cols-md-2'>
